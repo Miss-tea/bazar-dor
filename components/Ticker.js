@@ -5,18 +5,14 @@ export default function Ticker({ products = [] }) {
   if (!products.length) return null;
 
   const renderItemList = (copy) => (
-    <div
-      key={copy}
-      aria-hidden={copy === "duplicate"}
-      className="flex items-center gap-8 px-4"
-    >
+    <div key={copy} aria-hidden={copy === "duplicate"}
+      className="flex items-center gap-8 px-4">
       {products.map((product, index) => (
         <Link
           key={`${product.id ?? product.slug ?? product.name}-${index}`}
           href={`/product/${product.id ?? product.slug}`}
           tabIndex={copy === "duplicate" ? -1 : undefined}
-          className="flex items-center gap-2 whitespace-nowrap text-sm hover:underline"
-        >
+          className="flex items-center gap-2 whitespace-nowrap text-sm hover:underline">
           <span className="text-base" aria-hidden="true">
             {getProductEmoji(product)}
           </span>

@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
@@ -73,11 +74,7 @@ export default function Navbar({ categories = [] }) {
                 className="flex cursor-pointer items-center gap-2 rounded-full p-1.5 transition-colors hover:bg-gray-100"
               >
                 {user.image ? (
-                  <img
-                    src={user.image}
-                    alt={user.name || "User"}
-                    className="h-8 w-8 rounded-full object-cover"
-                  />
+                  <Image src={user.image} alt={user.name || "User"} width={32} height={32} unoptimized  className="h-8 w-8 rounded-full object-cover"  />
                 ) : (
                   <span className="flex h-8 w-8 items-center justify-center rounded-full bg-emerald-100 text-sm font-bold text-emerald-700">
                     {user.name?.[0] || "U"}
@@ -89,14 +86,12 @@ export default function Navbar({ categories = [] }) {
                 <span className="text-xs text-gray-400" aria-hidden="true">
                   ▼
                 </span>
-              </button>
-
+        </button>
               {dropdownOpen && (
                 <div
                   role="menu"
-                  className="absolute right-0 z-50 mt-2 w-48 rounded-xl border border-gray-200 bg-white py-1 shadow-lg"
-                >
-                  <div className="border-b border-gray-100 px-4 py-2">
+                  className="absolute right-0 z-50 mt-2 w-48 rounded-xl border border-gray-200 bg-white py-1 shadow-lg">
+        <div className="border-b border-gray-100 px-4 py-2">
                     <p className="text-xs text-gray-500">সাইন ইন আছেন</p>
                     <p className="truncate text-sm font-semibold text-gray-800">
                       {user.name}
@@ -106,16 +101,9 @@ export default function Navbar({ categories = [] }) {
                     href="/profile"
                     role="menuitem"
                     onClick={() => setDropdownOpen(false)}
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
-                  >
-                    প্রোফাইল দেখুন
-                  </Link>
-                  <button
-                    type="button"
-                    role="menuitem"
-                    onClick={handleSignOut}
-                    className="w-full cursor-pointer px-4 py-2 text-left text-sm text-rose-600 hover:bg-rose-50"
-                  >
+                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
+                    প্রোফাইল দেখুন </Link>
+                  <button type="button"role="menuitem" onClick={handleSignOut} className="w-full cursor-pointer px-4 py-2 text-left text-sm text-rose-600 hover:bg-rose-50">
                     সাইন আউট
                   </button>
                 </div>
@@ -123,38 +111,20 @@ export default function Navbar({ categories = [] }) {
             </div>
           ) : (
             <div className="flex items-center gap-3">
-              <Link
-                href="/signin"
-                className="px-3 py-1.5 text-sm font-medium text-gray-700 transition-colors hover:text-emerald-600"
-              >
+              <Link href="/signin" className="px-3 py-1.5 text-sm font-medium text-gray-700 transition-colors hover:text-emerald-600">
                 সাইন ইন
               </Link>
-              <Link
-                href="/signup"
-                className="rounded-lg bg-emerald-600 px-4 py-2 text-sm font-medium text-white shadow-sm transition-colors hover:bg-emerald-700"
-              >
+              <Link href="/signup" className="rounded-lg bg-emerald-600 px-4 py-2 text-sm font-medium text-white shadow-sm transition-colors hover:bg-emerald-700">
                 সাইন আপ
-              </Link>
+           </Link>
             </div>
           )}
         </div>
       </div>
-
       <div className="border-t border-gray-100 bg-gray-50/50">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <nav
-            aria-label="ক্যাটাগরি"
-            className="no-scrollbar flex items-center gap-6 overflow-x-auto whitespace-nowrap py-2.5 text-xs text-gray-600 sm:text-sm"
-          >
-            <Link
-              href="/"
-              aria-current={pathname === "/" ? "page" : undefined}
-              className={`flex items-center gap-1.5 font-semibold transition-colors ${
-                pathname === "/"
-                  ? "text-emerald-600"
-                  : "text-gray-600 hover:text-emerald-700"
-              }`}
-            >
+          <nav aria-label="ক্যাটাগরি"className="no-scrollbar flex items-center gap-6 overflow-x-auto whitespace-nowrap py-2.5 text-xs text-gray-600 sm:text-sm">
+            <Link href="/" aria-current={pathname === "/" ? "page" : undefined}className={`flex items-center gap-1.5 font-semibold transition-colors ${pathname === "/"? "text-emerald-600": "text-gray-600 hover:text-emerald-700" }`}>
               সব ক্যাটাগরি
             </Link>
             {categories.map((category) => {
@@ -169,9 +139,7 @@ export default function Navbar({ categories = [] }) {
                   className={`flex items-center gap-1.5 transition-colors ${
                     isActive
                       ? "font-semibold text-emerald-600"
-                      : "text-gray-600 hover:text-emerald-600"
-                  }`}
-                >
+                      : "text-gray-600 hover:text-emerald-600"}`}>
                   {category.icon && <span aria-hidden="true">{category.icon}</span>}
                   <span>
                     {category.nameBn || category.name_bn || category.name}
