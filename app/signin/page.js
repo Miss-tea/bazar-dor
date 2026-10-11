@@ -103,7 +103,7 @@ export default function SignInPage() {
               value={password}
               onChange={(event) => setPassword(event.target.value)}
               placeholder="••••••••"
-              className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm text-black placeholder:text-black outline-none focus:border-emerald-600 focus:ring-2 focus:ring-emerald-100"/>
+              className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm text-black placeholder:text-gray-400 outline-none focus:border-emerald-600 focus:ring-2 focus:ring-emerald-100"/>
           </div>
           <button type="submit" disabled={loading}
             className="w-full cursor-pointer rounded-lg bg-emerald-600 py-2.5 font-medium text-white shadow-sm transition-colors hover:bg-emerald-700 disabled:cursor-not-allowed disabled:opacity-50">
