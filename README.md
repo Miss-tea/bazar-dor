@@ -1,38 +1,74 @@
-# bazar-dor
+# Bazar Dor (বাজার দর)
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Bazar Dor is a modern, real-time price tracker and marketplace web application tailored for tracking essential daily commodities (rice, lentils, oil, vegetables, fish, meat, dairy, spices, etc.) with localized Bengali support, live price tickers, and secure authentication.
 
-## Getting Started
+🌐 **Live Demo:** [https://bazar-dor-ten-phi.vercel.app](https://bazar-dor-ten-phi.vercel.app)
 
-First, run the development server:
+---
 
+## ✨ Key Features
+
+- **Real-Time Commodity Price Ticker:** Live updating ticker bar displaying current market rates per kg/litre for essential items.
+- **Category Browsing:** Easy filtering across categories like Rice, Dal, Oil, Vegetables, Fish, Meat, Dairy, and Spices.
+- **Secure Authentication:** Built with **BetterAuth**, supporting Email/Password sign-in as well as Social Authentication (**Google** and **GitHub OAuth**).
+- **Serverless Database Architecture:** Powered by **Neon PostgreSQL** and Prisma/BetterAuth adapter for robust, cloud-native scalability.
+- **Bilingual Interface:** Clean, responsive UI with rich Bengali typography and emoji-enhanced product cards.
+- **Modern Tech Stack:** Built with Next.js, React, Tailwind CSS, and Vercel Serverless Functions.
+
+---
+
+## 🚀 Getting Started Locally
+
+Follow these steps to set up and run the project on your local machine:
+
+### 1. Clone the Repository
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/your-username/bazar-dor.git
+cd bazar-dor
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Install Dependencies
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+### 3. Configure Environment Variables
+Create a `.env.local` file in the root directory and add your credentials:
+```env
+DATABASE_URL=postgresql://user:password@your-neon-db-host/dbname?sslmode=require
+BETTER_AUTH_SECRET=your_super_secret_key_here
+BETTER_AUTH_URL=http://localhost:3000
+NEXT_PUBLIC_BETTER_AUTH_URL=http://localhost:3000
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+GOOGLE_CLIENT_ID=your_google_client_id
+GOOGLE_CLIENT_SECRET=your_google_client_secret
 
-## Learn More
+GITHUB_CLIENT_ID=your_github_client_id
+GITHUB_CLIENT_SECRET=your_github_client_secret
+```
 
-To learn more about Next.js, take a look at the following resources:
+### 4. Run Database Migrations
+```bash
+npx @better-auth/cli@latest migrate
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 5. Start Development Server
+```bash
+npm run dev
+```
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 🛠️ Deployment
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+This project is optimized for deployment on **Vercel**:
+1. Push your repository to GitHub.
+2. Import the project into Vercel.
+3. Configure the required environment variables (`DATABASE_URL`, `BETTER_AUTH_SECRET`, OAuth credentials, etc.) in the Vercel project dashboard.
+4. Deploy!
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## 📄 License
+This project is open-source and available under the [MIT License](LICENSE).
